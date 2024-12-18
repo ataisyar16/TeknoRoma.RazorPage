@@ -1,0 +1,13 @@
+﻿@page "{id}"
+@using TeknoRoma.RazorPage.Pages.Entities
+@model BirimDeleteModel
+@{
+    ViewData["Title"] = "Birim Sil";
+}
+
+<h2>Birim Sil</h2>
+<p>Birim silme işlemi yapılıyor...</p>
+<form method="post">
+    <button type="submit" class="btn btn-danger">Onayla</button>
+    <a class="btn btn-secondary" asp-page="./Birim">İptal</a>
+</form>
