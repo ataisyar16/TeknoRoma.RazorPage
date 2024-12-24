@@ -4,9 +4,10 @@ namespace TeknoRoma.Entities.Entities.Concrete
 {
     public class AppUser : IdentityUser
     {
-        public string FirstName { get; set; } // Kullanıcının adı
-        public string LastName { get; set; }  // Kullanıcının soyadı
-        public string PersonelId { get; set; } // Personel ile ilişki (Opsiyonel)
+        public string FullName { get; set; }
+        public string TcNo { get; set; } // Personel ile ilişki (Opsiyonel)
+        public string UserType { get; set; } = "Customer"; // Varsayılan değer
+                                                           // "Customer" veya "Employee" gibi değerler alabilir
 
         // Navigation Property
         public Personel Personel { get; set; }

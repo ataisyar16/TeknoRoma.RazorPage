@@ -1,0 +1,36 @@
+﻿@page
+@model TeknoRoma.Razorpage.Pages.Cariler.IndexModel
+@{
+
+}
+<a asp-page="./Create" class="btn btn-primary">Create</a>
+<table class="table table-hover">
+    <tr>
+        <td>SubeNo</td>
+        <td>CariHesapNo</td>
+        <td>Sehir</td>
+        <td>Ilce</td>
+        <td>Adres</td>
+        <td>Bakiye</td>
+    </tr>
+    <tbody>
+        @foreach (var item in Model.Cariler)
+        {
+            <tr>
+                <td>@item.SubeNo</td>
+                <td>@item.CariHesapNo</td>
+                <td>@item.Sehir</td>
+                <td>@item.Ilce</td>
+                <td>@item.Adres</td>
+                <td>@item.Bakiye</td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Duzenle</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Detay</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Sil</a>
+                    <a asp-page="/Privacy">Privacy</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

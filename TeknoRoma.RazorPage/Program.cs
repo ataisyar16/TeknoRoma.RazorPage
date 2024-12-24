@@ -1,9 +1,9 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using TeknoRoma.BL.BL.Managers.Abstract;
+using TeknoRoma.BL.BL.Managers.Concrete;
 using TeknoRoma.DAL.DAL.Contexts;
-using TeknoRoma.Entities.Entities.Concrete;
 
-namespace TeknoRoma.RazorPage
+namespace TeknoRoma.Razorpage
 {
     public class Program
     {
@@ -13,15 +13,30 @@ namespace TeknoRoma.RazorPage
 
             // Add services to the container.
             builder.Services.AddRazorPages();
-            // Veritabaný baðlantýsý
+
+            builder.Services.AddScoped(typeof(IManager<>), typeof(Manager<>));
+
             builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-            // Identity ayarlarý
-            builder.Services.AddIdentity<AppUser, IdentityRole>()
-                .AddEntityFrameworkStores<AppDbContext>()
-                .AddDefaultTokenProviders();
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Constr")));
 
             var app = builder.Build();
+
+            // Veritabaný baðlantýsýný kontrol etme kodu
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<AppDbContext>();
+                try
+                {
+                    context.Database.EnsureCreated();
+                    Console.WriteLine("Veritabaný baðlantýsý baþarýlý!");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Veritabaný baðlantý hatasý: {ex.Message}");
+                }
+            }
+
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -36,12 +51,10 @@ namespace TeknoRoma.RazorPage
 
             app.UseRouting();
 
-            app.UseAuthentication();
             app.UseAuthorization();
 
-            app.MapStaticAssets();
-            app.MapRazorPages()
-               .WithStaticAssets();
+
+            app.MapRazorPages();
 
             app.Run();
         }

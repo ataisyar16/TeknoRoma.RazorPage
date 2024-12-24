@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using TeknoRoma.Entities.Entities.Abstract;
 using TeknoRoma.Entities.Entities.Concrete;
-using TeknoRoma.Entities.EntityConfig;
 
 namespace TeknoRoma.DAL.DAL.Contexts
 {
@@ -17,9 +18,10 @@ namespace TeknoRoma.DAL.DAL.Contexts
         public DbSet<FaturaDetay> FaturaDetaylari { get; set; }
         public DbSet<Kasa> Kasalar { get; set; }
         public DbSet<KasaHareket> KasaHareketleri { get; set; }
-        public DbSet<Kategori> Kategoriler { get; set; }
+        public DbSet<TeknoRoma.Entities.Entities.Concrete.Kategori> Kategoriler { get; set; }
         public DbSet<KullaniciYorum> KullaniciYorumlari { get; set; }
         public DbSet<Kur> Kurlar { get; set; }
+        public DbSet<Menu> Menuler { get; set; }
         public DbSet<Personel> Personeller { get; set; }
         public DbSet<Satis> Satislar { get; set; }
         public DbSet<SatisDetay> SatisDetaylari { get; set; }
@@ -30,6 +32,7 @@ namespace TeknoRoma.DAL.DAL.Contexts
         public DbSet<StokHareket> StokHareketleri { get; set; }
         public DbSet<Sube> Subeler { get; set; }
         public DbSet<Tedarikci> Tedarikciler { get; set; }
+        public DbSet<AppUser> Kullanicilar { get; set; }
 
         public AppDbContext()
         {
@@ -39,23 +42,70 @@ namespace TeknoRoma.DAL.DAL.Contexts
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
-
-            // Apply configurations from the EntityConfig folder
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
-
-            // Manually configure AppUser
-            modelBuilder.ApplyConfiguration(new AppUserConfig());
-        }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql(@"server=127.0.0.1;User Id=postgres;password=qweasd;Database=DbTeknoroma");
+                optionsBuilder.UseNpgsql(@"server=127.0.0.1;User Id=postgres;password=qweasd;Database=TeknoRoma");
             }
         }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder); // Burasi calismak zorunda. Cunku Identity'nin ihtiyac dusdugu tablolar olusmazs 
+
+            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        }
+
+        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
+        {
+            var entities = ChangeTracker.Entries()
+                .Where(x => x.State == EntityState.Added || x.State == EntityState.Modified)
+                .ToList();
+
+            foreach (var entity in entities)
+            {
+                if (entity.Entity is BaseEntity baseEntity)
+                {
+                    var now = DateTime.UtcNow;
+                    if (entity.State == EntityState.Added)
+                    {
+                        baseEntity.CreatedAt = now;
+                    }
+                    else
+                    {
+                        baseEntity.UpdateAt = now;
+                    }
+                }
+            }
+            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        }
+        public override int SaveChanges()
+        {
+            var entities = ChangeTracker.Entries()
+                .Where(x => x.State == EntityState.Added || x.State == EntityState.Modified)
+                .ToList();
+
+            foreach (var entity in entities)
+            {
+                if (entity.Entity is BaseEntity baseEntity)
+                {
+                    var now = DateTime.UtcNow;
+                    if (entity.State == EntityState.Added)
+                    {
+                        baseEntity.CreatedAt = now;
+                    }
+                    else
+                    {
+                        baseEntity.UpdateAt = now;
+                    }
+                }
+            }
+
+
+            return base.SaveChanges();
+
+        }
+
     }
 }

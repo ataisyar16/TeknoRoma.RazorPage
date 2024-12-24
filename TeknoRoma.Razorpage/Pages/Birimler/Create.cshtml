@@ -1,0 +1,23 @@
+﻿@page
+@model TeknoRoma.Razorpage.Pages.Birimler.CreateModel
+@{
+    ViewData["Title"] = "Yeni Birim Ekle";
+}
+<h1>Yeni Birim Ekle</h1>
+<div class="card">
+    <div class="card-header">Birim Bilgileri</div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="InsertModel.BirimKodu"></label>
+                <input asp-for="InsertModel.BirimKodu" class="form-control" />
+                <span asp-validation-for="InsertModel.BirimKodu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.Aciklama"></label>
+                <input asp-for="InsertModel.Aciklama" class="form-control" />
+                <span asp-validation-for="InsertModel.Aciklama" class="text-danger"></span>
+            </div>
+        </form>
+    </div>
+</div>

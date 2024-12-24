@@ -1,0 +1,36 @@
+﻿@page
+@model TeknoRoma.Razorpage.Pages.Stoklar.IndexModel
+@{
+    ViewData["Title"] = "Stok Listesi";
+}
+
+<h1>Stok Listesi</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Stok Adı</th>
+            <th>Stok Kodu</th>
+            <th>Depo Id</th>
+            <th>Birim Id</th>
+            <th>Fiyat</th>
+            <th>Stok Adet</th>
+            <th>Kategori Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var stok in Model.Stoklar)
+        {
+            <tr>
+                <td>@stok.StokAdi</td>
+                <td>@stok.StokKodu</td>
+                <td>@stok.DepoId</td>
+                <td>@stok.BirimId</td>
+                <td>@stok.Fiyat</td>
+                <td>@stok.StokAdet</td>
+                <td>@stok.KategoriId</td>
+            </tr>
+        }
+        <button type="submit" class="btn btn-primary mt-3">Kaydet</button>
+    </tbody>
+</table>

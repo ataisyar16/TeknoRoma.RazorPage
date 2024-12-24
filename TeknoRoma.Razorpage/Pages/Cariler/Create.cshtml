@@ -1,0 +1,43 @@
+﻿@page
+@model TeknoRoma.Razorpage.Pages.Cariler.CreateModel
+@{
+    ViewData["Title"] = "Yeni Cari Ekle";
+}
+<div class="card">
+    <div class="card-header">Stok Bilgileri</div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="InsertModel.SubeNo"></label>
+                <input asp-for="InsertModel.SubeNo" class="form-control" />
+                <span asp-validation-for="InsertModel.SubeNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.CariHesapNo"></label>
+                <input asp-for="InsertModel.CariHesapNo" class="form-control" />
+                <span asp-validation-for="InsertModel.CariHesapNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.Sehir"></label>
+                <input asp-for="InsertModel.Sehir" class="form-control" />
+                <span asp-validation-for="InsertModel.Sehir" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.Ilce"></label>
+                <input asp-for="InsertModel.Ilce" class="form-control" />
+                <span asp-validation-for="InsertModel.Ilce" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.Adres"></label>
+                <input asp-for="InsertModel.Adres" class="form-control" />
+                <span asp-validation-for="InsertModel.Adres" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.Bakiye"></label>
+                <input asp-for="InsertModel.Bakiye" class="form-control" />
+                <span asp-validation-for="InsertModel.Bakiye" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Kaydet</button>
+        </form>
+    </div>
+</div>

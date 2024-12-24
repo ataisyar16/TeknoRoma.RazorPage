@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeknoRoma.Entities", "TeknoRoma.Entities\TeknoRoma.Entities.csproj", "{F71BA39D-62AB-4D62-9BCB-FD4A5C4D3B4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeknoRoma.DAL", "TeknoRoma.DAL\TeknoRoma.DAL.csproj", "{930123FB-1AC8-4C31-AF76-CE71BAFD4932}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeknoRoma.BL", "TeknoRoma.BL\TeknoRoma.BL.csproj", "{F39E9119-2BC2-47FE-93A9-DAA3E3468FB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeknoRoma.Razorpage", "TeknoRoma.Razorpage\TeknoRoma.Razorpage.csproj", "{C9B9E0B0-81D2-4FF7-99BF-62EE0B7F91EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeknoRoma.NewAdmin", "TeknoRoma.NewAdmin\TeknoRoma.NewAdmin.csproj", "{1CD07D1D-9FDF-4DE5-BB0E-4A07FFA3E5D4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F71BA39D-62AB-4D62-9BCB-FD4A5C4D3B4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F71BA39D-62AB-4D62-9BCB-FD4A5C4D3B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F71BA39D-62AB-4D62-9BCB-FD4A5C4D3B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F71BA39D-62AB-4D62-9BCB-FD4A5C4D3B4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{930123FB-1AC8-4C31-AF76-CE71BAFD4932}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{930123FB-1AC8-4C31-AF76-CE71BAFD4932}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{930123FB-1AC8-4C31-AF76-CE71BAFD4932}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{930123FB-1AC8-4C31-AF76-CE71BAFD4932}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F39E9119-2BC2-47FE-93A9-DAA3E3468FB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F39E9119-2BC2-47FE-93A9-DAA3E3468FB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F39E9119-2BC2-47FE-93A9-DAA3E3468FB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F39E9119-2BC2-47FE-93A9-DAA3E3468FB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9B9E0B0-81D2-4FF7-99BF-62EE0B7F91EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9B9E0B0-81D2-4FF7-99BF-62EE0B7F91EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9B9E0B0-81D2-4FF7-99BF-62EE0B7F91EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9B9E0B0-81D2-4FF7-99BF-62EE0B7F91EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CD07D1D-9FDF-4DE5-BB0E-4A07FFA3E5D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CD07D1D-9FDF-4DE5-BB0E-4A07FFA3E5D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CD07D1D-9FDF-4DE5-BB0E-4A07FFA3E5D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CD07D1D-9FDF-4DE5-BB0E-4A07FFA3E5D4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

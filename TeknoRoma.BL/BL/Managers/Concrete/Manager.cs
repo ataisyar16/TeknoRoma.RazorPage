@@ -17,11 +17,14 @@ namespace TeknoRoma.BL.BL.Managers.Concrete
             var result = new MyResult();
             try
             {
+                Console.WriteLine("InsertAsync başlıyor...");
                 await base.InsertAsync(entity, cancellationToken);
+                Console.WriteLine("InsertAsync başarılı!");
                 result.Success = true;
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"InsertAsync hatası: {ex.Message}");
                 result.Success = false;
                 result.Errors.Add(new MyError { Message = ex.Message });
             }

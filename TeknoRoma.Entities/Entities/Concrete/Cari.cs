@@ -4,7 +4,7 @@ namespace TeknoRoma.Entities.Entities.Concrete
 {
     public class Cari : BaseEntity
     {
-        public string SubeNo { get; set; }
+        public string? SubeNo { get; set; }
         public string CariHesapNo { get; set; }
         public string Sehir { get; set; }
         public string Ilce { get; set; }

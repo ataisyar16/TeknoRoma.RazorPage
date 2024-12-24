@@ -1,0 +1,13 @@
+﻿@page
+@model TeknoRoma.Razorpage.Pages.Dashboard.DashboardModel
+@{
+    ViewData["Title"] = "Kontrol Paneli";
+}
+<h1>Kontrol Paneli</h1>
+
+<div class="d-grid gap-2">
+    <button class="btn btn-primary" onclick="location.href='/Satislar/Create'">Yeni Satış Ekle</button>
+    <button class="btn btn-success" onclick="location.href='/Satislar/Index'">Satış Listesi</button>
+    <button class="btn btn-primary" onclick="location.href='/Stoklar/Create'">Yeni Stok Ekle</button>
+    <button class="btn btn-success" onclick="location.href='/Stoklar/Index'">Stok Listesi</button>
+</div>

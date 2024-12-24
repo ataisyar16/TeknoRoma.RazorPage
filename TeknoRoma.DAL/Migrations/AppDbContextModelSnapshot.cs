@@ -173,15 +173,9 @@ namespace TeknoRoma.DAL.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("FirstName")
+                    b.Property<string>("FullName")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasColumnType("text");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("boolean");
@@ -212,12 +206,20 @@ namespace TeknoRoma.DAL.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text");
 
+                    b.Property<string>("TcNo")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("boolean");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
+
+                    b.Property<string>("UserType")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -228,8 +230,7 @@ namespace TeknoRoma.DAL.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
 
-                    b.HasIndex("PersonelId")
-                        .IsUnique();
+                    b.HasIndex("PersonelId");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -240,11 +241,9 @@ namespace TeknoRoma.DAL.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Aciklama")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("BirimKodu")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
@@ -286,7 +285,6 @@ namespace TeknoRoma.DAL.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("SubeNo")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("UpdateAt")
@@ -607,6 +605,55 @@ namespace TeknoRoma.DAL.Migrations
                     b.ToTable("Kurlar");
                 });
 
+            modelBuilder.Entity("TeknoRoma.Entities.Entities.Concrete.Menu", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Action")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Area")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Controller")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Css")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Icon")
+                        .HasColumnType("text");
+
+                    b.Property<string>("MenuAdi")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Page")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ParentId")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("Menuler");
+                });
+
             modelBuilder.Entity("TeknoRoma.Entities.Entities.Concrete.Personel", b =>
                 {
                     b.Property<string>("Id")
@@ -742,6 +789,10 @@ namespace TeknoRoma.DAL.Migrations
                     b.Property<DateTime?>("SiparisTarihi")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<string>("StokId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<DateTime>("UpdateAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -749,7 +800,43 @@ namespace TeknoRoma.DAL.Migrations
 
                     b.HasIndex("CariId");
 
+                    b.HasIndex("StokId");
+
                     b.ToTable("Siparisler");
+                });
+
+            modelBuilder.Entity("TeknoRoma.Entities.Entities.Concrete.SiparisDetay", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<double>("BirimFiyat")
+                        .HasColumnType("double precision");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("Miktar")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("SiparisId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("StokId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdateAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SiparisId");
+
+                    b.HasIndex("StokId");
+
+                    b.ToTable("SiparisDetay");
                 });
 
             modelBuilder.Entity("TeknoRoma.Entities.Entities.Concrete.Stok", b =>
@@ -772,6 +859,7 @@ namespace TeknoRoma.DAL.Migrations
                         .HasColumnType("double precision");
 
                     b.Property<string>("KategoriId")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int?>("StokAdet")
@@ -991,9 +1079,8 @@ namespace TeknoRoma.DAL.Migrations
             modelBuilder.Entity("TeknoRoma.Entities.Entities.Concrete.AppUser", b =>
                 {
                     b.HasOne("TeknoRoma.Entities.Entities.Concrete.Personel", "Personel")
-                        .WithOne()
-                        .HasForeignKey("TeknoRoma.Entities.Entities.Concrete.AppUser", "PersonelId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .WithMany()
+                        .HasForeignKey("PersonelId");
 
                     b.Navigation("Personel");
                 });
@@ -1110,6 +1197,15 @@ namespace TeknoRoma.DAL.Migrations
                     b.Navigation("Doviz");
                 });
 
+            modelBuilder.Entity("TeknoRoma.Entities.Entities.Concrete.Menu", b =>
+                {
+                    b.HasOne("TeknoRoma.Entities.Entities.Concrete.Menu", "Parent")
+                        .WithMany("Children")
+                        .HasForeignKey("ParentId");
+
+                    b.Navigation("Parent");
+                });
+
             modelBuilder.Entity("TeknoRoma.Entities.Entities.Concrete.Personel", b =>
                 {
                     b.HasOne("TeknoRoma.Entities.Entities.Concrete.Departman", "Departman")
@@ -1183,7 +1279,34 @@ namespace TeknoRoma.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("TeknoRoma.Entities.Entities.Concrete.Stok", "Stok")
+                        .WithMany()
+                        .HasForeignKey("StokId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Cari");
+
+                    b.Navigation("Stok");
+                });
+
+            modelBuilder.Entity("TeknoRoma.Entities.Entities.Concrete.SiparisDetay", b =>
+                {
+                    b.HasOne("TeknoRoma.Entities.Entities.Concrete.Siparis", "Siparis")
+                        .WithMany("SiparisDetaylari")
+                        .HasForeignKey("SiparisId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TeknoRoma.Entities.Entities.Concrete.Stok", "Stok")
+                        .WithMany("SiparisDetaylari")
+                        .HasForeignKey("StokId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Siparis");
+
+                    b.Navigation("Stok");
                 });
 
             modelBuilder.Entity("TeknoRoma.Entities.Entities.Concrete.Stok", b =>
@@ -1200,13 +1323,17 @@ namespace TeknoRoma.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TeknoRoma.Entities.Entities.Concrete.Kategori", null)
+                    b.HasOne("TeknoRoma.Entities.Entities.Concrete.Kategori", "Kategori")
                         .WithMany("Stoklar")
-                        .HasForeignKey("KategoriId");
+                        .HasForeignKey("KategoriId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Birim");
 
                     b.Navigation("Depo");
+
+                    b.Navigation("Kategori");
                 });
 
             modelBuilder.Entity("TeknoRoma.Entities.Entities.Concrete.StokBarkod", b =>
@@ -1305,6 +1432,11 @@ namespace TeknoRoma.DAL.Migrations
                     b.Navigation("Stoklar");
                 });
 
+            modelBuilder.Entity("TeknoRoma.Entities.Entities.Concrete.Menu", b =>
+                {
+                    b.Navigation("Children");
+                });
+
             modelBuilder.Entity("TeknoRoma.Entities.Entities.Concrete.Personel", b =>
                 {
                     b.Navigation("Satislar");
@@ -1315,6 +1447,11 @@ namespace TeknoRoma.DAL.Migrations
                     b.Navigation("SatisDetaylari");
                 });
 
+            modelBuilder.Entity("TeknoRoma.Entities.Entities.Concrete.Siparis", b =>
+                {
+                    b.Navigation("SiparisDetaylari");
+                });
+
             modelBuilder.Entity("TeknoRoma.Entities.Entities.Concrete.Stok", b =>
                 {
                     b.Navigation("FaturaDetaylari");
@@ -1322,6 +1459,8 @@ namespace TeknoRoma.DAL.Migrations
                     b.Navigation("KullaniciYorumlari");
 
                     b.Navigation("SatisDetaylari");
+
+                    b.Navigation("SiparisDetaylari");
 
                     b.Navigation("StokBarkodlari");
 

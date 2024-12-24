@@ -10,5 +10,8 @@ namespace TeknoRoma.Entities.Entities.Concrete
 
         // Navigation Properties
         public Cari Cari { get; set; }
+        public ICollection<SiparisDetay> SiparisDetaylari { get; set; }
+        public string StokId { get; set; }
+        public Stok Stok { get; set; }
     }
 }
