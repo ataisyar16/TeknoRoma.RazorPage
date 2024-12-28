@@ -1,4 +1,26 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.Departmanlar.CreateModel
+
 @{
+    ViewData["Title"] = "Yeni Departman Ekle";
 }
+<h1>Yeni Departman Ekle</h1>
+<div class="card">
+    <div class="card-header">Departman Bilgileri</div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.InsertModel.DepartmanAdi"></label>
+                <input asp-for="InsertModel.DepartmanAdi" class="form-control" />
+                <span asp-validation-for="InsertModel.DepartmanAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.UstId"></label>
+                <input asp-for="InsertModel.UstId" class="form-control" />
+                <span asp-validation-for="InsertModel.UstId" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </div>
+</div>
+<partial name="_ValidationScriptsPartial" />

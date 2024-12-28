@@ -1,4 +1,20 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.Kategoriler.CreateModel
 @{
+    ViewData["Title"] = "Yeni Kategori Ekle";
 }
+<h1>Yeni Kategori Ekle</h1>
+<div class="card">
+    <div class="card-header">Kategori Bilgileri</div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.InsertModel.KategoriAdi"></label>
+                <input asp-for="InsertModel.KategoriAdi" class="form-control" />
+                <span asp-validation-for="InsertModel.KategoriAdi" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </div>
+</div>
+<partial name="_ValidationScriptsPartial" />

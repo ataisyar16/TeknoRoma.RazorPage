@@ -4,13 +4,13 @@ using TeknoRoma.Entities.Entities.Concrete;
 
 namespace TeknoRoma.Razorpage.Pages.Stoklar
 {
-    public class IndexModel(IManager<Stok> manager) : PageModel
+    public class IndexModel(IManager<Stok> stokManager) : PageModel
     {
-        public ICollection<Stok> Stoklar { get; set; } = new List<Stok>();
+        public ICollection<Stok> Stoklar { get; set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGet()
         {
-            Stoklar = await manager.GetAllAsync(default);
+            Stoklar = await stokManager.GetAllAsync(default);
         }
     }
 }

@@ -1,4 +1,30 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.Depolar.CreateModel
 @{
+    ViewData["Title"] = "Yeni Depo Ekle";
 }
+<h1>Yeni Depo Ekle</h1>
+<div class="card">
+    <div class="card-header">Depo Bilgileri</div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="InsertModel.DepoAdi"></label>
+                <input asp-for="InsertModel.DepoAdi" class="form-control" />
+                <span asp-validation-for="InsertModel.DepoAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.SubeId"></label>
+                <input asp-for="InsertModel.SubeId" class="form-control" />
+                <span asp-validation-for="InsertModel.SubeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.Adres"></label>
+                <input asp-for="InsertModel.Adres" class="form-control" />
+                <span asp-validation-for="InsertModel.Adres" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </div>
+</div>
+<partial name="_ValidationScriptsPartial" />

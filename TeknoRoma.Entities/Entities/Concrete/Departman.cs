@@ -9,6 +9,6 @@ namespace TeknoRoma.Entities.Entities.Concrete
 
         // Navigation Properties
         public ICollection<Personel> Personeller { get; set; }
-        public Departman UstDepartman { get; set; }
+        public Departman? UstDepartman { get; set; }
     }
 }

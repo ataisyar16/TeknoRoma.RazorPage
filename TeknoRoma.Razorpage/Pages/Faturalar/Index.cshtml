@@ -1,4 +1,56 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.Faturalar.IndexModel
 @{
+    ViewData["Title"] = "Faturalar";
+    Layout = "/Pages/Shared/_Layout.cshtml";
 }
+
+<div class="card">
+    <h5 class="card-header">
+        <a asp-page="Create" class="btn btn-primary">Add New Fatura</a>
+    </h5>
+    <div class="">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Cari Id</th>
+                    <th> Fatura Tarihi</th>
+                    <th>ToplamTutar</th>
+                    <th>KDV</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var fatura in Model.Faturalar)
+                {
+                    <tr>
+                        <td><strong>@fatura.CariId</strong></td>
+                        <td><strong>@fatura.FaturaTarihi</strong></td>
+                        <td><strong>@fatura.ToplamTutar</strong></td>
+                        <td><strong>@fatura.KDV</strong></td>
+                        <td>
+                            @{
+                                if (fatura.CariId != null)
+                                {
+                                    <strong>@fatura.CariId</strong>
+
+                                }
+                            }
+                        </td>
+
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-page="Update" asp-route-id="@fatura.Id"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" asp-page="Delete" asp-route-id="@fatura.Id"><i class="bx bx-trash me-1"></i> Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

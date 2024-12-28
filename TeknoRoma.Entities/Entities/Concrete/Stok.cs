@@ -4,17 +4,17 @@ namespace TeknoRoma.Entities.Entities.Concrete
 {
     public class Stok : BaseEntity
     {
-        public string? StokAdi { get; set; }
-        public string? StokKodu { get; set; }
-        public string DepoId { get; set; }
-        public int? StokAdet { get; set; }
-        public string BirimId { get; set; }
-        public double? Fiyat { get; set; }
+        public string StokAdi { get; set; }
+        public string StokKodu { get; set; }
+        public string? DepoId { get; set; }
+        public int StokAdet { get; set; }
+
+        public double Fiyat { get; set; }
         public string KategoriId { get; set; } // İlgili kategoriyi temsil eder
 
         // Navigation Properties
         public Depo Depo { get; set; }
-        public Birim Birim { get; set; }
+
         public Kategori Kategori { get; set; } // Stok bir kategoride yer alır
         public ICollection<StokBarkod> StokBarkodlari { get; set; }
         public ICollection<StokFotograf> StokFotograflari { get; set; }

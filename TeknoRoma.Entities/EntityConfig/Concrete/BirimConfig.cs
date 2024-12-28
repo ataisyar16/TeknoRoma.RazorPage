@@ -18,10 +18,7 @@ namespace TeknoRoma.Entities.EntityConfig
             builder.Property(b => b.Aciklama)
                    .HasMaxLength(100);
 
-            builder.HasMany(b => b.Stoklar)
-                   .WithOne(s => s.Birim)
-                   .HasForeignKey(s => s.BirimId)
-                   .OnDelete(DeleteBehavior.NoAction);
+
         }
     }
 }

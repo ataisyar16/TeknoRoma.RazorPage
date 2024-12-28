@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using TeknoRoma.BL.BL.Managers.Abstract;
 using TeknoRoma.Entities.Entities.Concrete;
@@ -11,37 +12,37 @@ namespace TeknoRoma.Razorpage.Pages.Birimler
         [BindProperty]
         public InputModel InsertModel { get; set; } = new();
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPost()
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var birim = new Birim
-                {
-                    BirimKodu = InsertModel.BirimKodu,
-                    Aciklama = InsertModel.Aciklama
-                };
-
-                var result = await manager.InsertAsync(birim, default);
-                if (result.Success)
-                {
-                    return RedirectToPage("Index");
-                }
-
+                return Page();
+            }
+            Birim birim = new();
+            birim.BirimKodu = InsertModel.BirimKodu;
+            birim.Aciklama = InsertModel.Aciklama;
+            var result = await manager.InsertAsync(birim, default);
+            if (result.Success)
+            {
+                return RedirectToPage("Index");
+            }
+            else
+            {
                 foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError(error.Code, error.Message);
+                    ModelState.AddModelError("", error.Message);
                 }
+                return Page();
             }
-
-            return Page();
         }
-
         public class InputModel
         {
-            [Required]
+            [Required(ErrorMessage = "Birim kodu zorunludur")]
+            [DisplayName("Birim Kodu")]
             public string? BirimKodu { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Aciklama zorunludur")]
+            [DisplayName("Aciklama")]
             public string? Aciklama { get; set; }
         }
     }

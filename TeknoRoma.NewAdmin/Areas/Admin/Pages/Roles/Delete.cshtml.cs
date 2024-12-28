@@ -1,6 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace TeknoRoma.Razorpage.Pages.Menuler
+namespace TeknoRoma.NewAdmin.Areas.Admin.Pages.Roles
 {
     public class DeleteModel : PageModel
     {

@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace TeknoRoma.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class initDb : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -47,11 +47,11 @@ namespace TeknoRoma.DAL.Migrations
                 {
                     Id = table.Column<string>(type: "text", nullable: false),
                     SubeNo = table.Column<string>(type: "text", nullable: true),
-                    CariHesapNo = table.Column<string>(type: "text", nullable: false),
-                    Sehir = table.Column<string>(type: "text", nullable: false),
-                    Ilce = table.Column<string>(type: "text", nullable: false),
-                    Adres = table.Column<string>(type: "text", nullable: false),
-                    Bakiye = table.Column<decimal>(type: "numeric", nullable: false),
+                    CariHesapNo = table.Column<string>(type: "text", nullable: true),
+                    Sehir = table.Column<string>(type: "text", nullable: true),
+                    Ilce = table.Column<string>(type: "text", nullable: true),
+                    Adres = table.Column<string>(type: "text", nullable: true),
+                    Bakiye = table.Column<decimal>(type: "numeric", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdateAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
@@ -67,7 +67,7 @@ namespace TeknoRoma.DAL.Migrations
                     Id = table.Column<string>(type: "text", nullable: false),
                     DepartmanAdi = table.Column<string>(type: "text", nullable: false),
                     UstId = table.Column<string>(type: "text", nullable: false),
-                    UstDepartmanId = table.Column<string>(type: "text", nullable: false),
+                    UstDepartmanId = table.Column<string>(type: "text", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdateAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
@@ -78,8 +78,7 @@ namespace TeknoRoma.DAL.Migrations
                         name: "FK_Departmanlar_Departmanlar_UstDepartmanId",
                         column: x => x.UstDepartmanId,
                         principalTable: "Departmanlar",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -355,13 +354,13 @@ namespace TeknoRoma.DAL.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "text", nullable: false),
-                    StokAdi = table.Column<string>(type: "text", nullable: true),
-                    StokKodu = table.Column<string>(type: "text", nullable: true),
-                    DepoId = table.Column<string>(type: "text", nullable: false),
-                    StokAdet = table.Column<int>(type: "integer", nullable: true),
-                    BirimId = table.Column<string>(type: "text", nullable: false),
-                    Fiyat = table.Column<double>(type: "double precision", nullable: true),
+                    StokAdi = table.Column<string>(type: "text", nullable: false),
+                    StokKodu = table.Column<string>(type: "text", nullable: false),
+                    DepoId = table.Column<string>(type: "text", nullable: true),
+                    StokAdet = table.Column<int>(type: "integer", nullable: false),
+                    Fiyat = table.Column<double>(type: "double precision", nullable: false),
                     KategoriId = table.Column<string>(type: "text", nullable: false),
+                    BirimId = table.Column<string>(type: "text", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdateAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
@@ -372,14 +371,12 @@ namespace TeknoRoma.DAL.Migrations
                         name: "FK_Stoklar_Birimler_BirimId",
                         column: x => x.BirimId,
                         principalTable: "Birimler",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Stoklar_Depolar_DepoId",
                         column: x => x.DepoId,
                         principalTable: "Depolar",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Stoklar_Kategoriler_KategoriId",
                         column: x => x.KategoriId,

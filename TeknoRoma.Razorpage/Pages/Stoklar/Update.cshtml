@@ -1,60 +1,43 @@
-﻿@page "{id}"
-@model TeknoRoma.Razorpage.Pages.Stoklar.UpdateStokModel
+﻿@page "{id:int}"
+@model TeknoRoma.Razorpage.Pages.Stoklar.UpdateModel
 @{
     ViewData["Title"] = "Stok Güncelle";
 }
+<h2>Stok Güncelle</h2>
 
-<h1>Stok Güncelle</h1>
-
-<div class="card">
-    <div class="card-header">Stok Bilgileri</div>
-    <div class="card-body">
-        <form method="post">
-            <input type="hidden" asp-for="UpdateModel.Id" />
-
-            <div class="form-group">
-                <label asp-for="UpdateModel.StokAdi"></label>
-                <input asp-for="UpdateModel.StokAdi" class="form-control" />
-                <span asp-validation-for="UpdateModel.StokAdi" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="UpdateModel.StokKodu"></label>
-                <input asp-for="UpdateModel.StokKodu" class="form-control" />
-                <span asp-validation-for="UpdateModel.StokKodu" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="UpdateModel.DepoId"></label>
-                <input asp-for="UpdateModel.DepoId" class="form-control" />
-                <span asp-validation-for="UpdateModel.DepoId" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="UpdateModel.BirimId"></label>
-                <input asp-for="UpdateModel.BirimId" class="form-control" />
-                <span asp-validation-for="UpdateModel.BirimId" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="UpdateModel.Fiyat"></label>
-                <input asp-for="UpdateModel.Fiyat" class="form-control" />
-                <span asp-validation-for="UpdateModel.Fiyat" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="UpdateModel.StokAdet"></label>
-                <input asp-for="UpdateModel.StokAdet" class="form-control" />
-                <span asp-validation-for="UpdateModel.StokAdet" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label asp-for="UpdateModel.KategoriId"></label>
-                <input asp-for="UpdateModel.KategoriId" class="form-control" />
-                <span asp-validation-for="UpdateModel.KategoriId" class="text-danger"></span>
-            </div>
-
-            <button type="submit" class="btn btn-primary mt-3">Güncelle</button>
-        </form>
+<form method="post">
+    <div class="form-group">
+        <label asp-for="EditModel.StokAdi"></label>
+        <input asp-for="EditModel.StokAdi" class="form-control" />
+        <span asp-validation-for="EditModel.StokAdi" class="text-danger"></span>
     </div>
-</div>
+    <div class="form-group">
+        <label asp-for="EditModel.StokKodu"></label>
+        <input asp-for="EditModel.StokKodu" class="form-control" />
+        <span asp-validation-for="EditModel.StokKodu" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EditModel.DepoId"></label>
+        <input asp-for="EditModel.DepoId" class="form-control" />
+        <span asp-validation-for="EditModel.DepoId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EditModel.StokAdet"></label>
+        <input asp-for="EditModel.StokAdet" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="EditModel.BirimId"></label>
+        <input asp-for="EditModel.BirimId" class="form-control" />
+        <span asp-validation-for="EditModel.BirimId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="EditModel.Fiyat"></label>
+        <input asp-for="EditModel.Fiyat" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="EditModel.KategoriId"></label>
+        <input asp-for="EditModel.KategoriId" class="form-control" />
+        <span asp-validation-for="EditModel.KategoriId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+</form>

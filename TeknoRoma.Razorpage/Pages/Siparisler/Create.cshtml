@@ -1,4 +1,30 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.Siparisler.CreateModel
 @{
+    ViewData["Title"] = "Yeni Siparis Ekle";
 }
+<h1>Yeni Siparis Ekle</h1>
+<div class="card">
+    <div class="card-header">Siparis Bilgileri</div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.InsertModel.CariId"></label>
+                <input asp-for="InsertModel.CariId" class="form-control" />
+                <span asp-validation-for="InsertModel.CariId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.SiparisTarihi"></label>
+                <input asp-for="InsertModel.SiparisTarihi" class="form-control" />
+                <span asp-validation-for="InsertModel.SiparisTarihi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.Durum"></label>
+                <input asp-for="InsertModel.Durum" class="form-control" />
+                <span asp-validation-for="InsertModel.Durum" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </div>
+</div>
+<partial name="_ValidationScriptsPartial" />

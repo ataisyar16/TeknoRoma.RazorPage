@@ -5,11 +5,11 @@ namespace TeknoRoma.Entities.Entities.Concrete
     public class Cari : BaseEntity
     {
         public string? SubeNo { get; set; }
-        public string CariHesapNo { get; set; }
-        public string Sehir { get; set; }
-        public string Ilce { get; set; }
-        public string Adres { get; set; }
-        public decimal Bakiye { get; set; }
+        public string? CariHesapNo { get; set; }
+        public string? Sehir { get; set; }
+        public string? Ilce { get; set; }
+        public string? Adres { get; set; }
+        public decimal? Bakiye { get; set; }
 
         // Navigation Properties
         public ICollection<Fatura> Faturalar { get; set; }

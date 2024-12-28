@@ -1,0 +1,64 @@
+﻿@page
+@model TeknoRoma.Razorpage.Pages.Menuler.InsertModel
+@{
+}
+<div class="col-md-6 col-lg-5 col-xl-4 mt-5 mt-md-0">
+    <form id="form" class="form-group flex-wrap bg-white p-5 rounded-4 ms-md-5" method="post">
+        <h3 class="display-5">Register Form</h3>
+
+        <div class="col-lg-12 my-4">
+            <label class="form-label text-uppercase" asp-for="@Model.MenuInsertVM.MenuAdi">Menu Adi</label>
+            <input class="form-control text-black-50 ps-3" asp-for="@Model.MenuInsertVM.MenuAdi">
+            <span asp-validation-for="@Model.MenuInsertVM.MenuAdi" class="text-danger"></span>
+        </div>
+        <div class="col-lg-12 my-4">
+            <label class="form-label text-uppercase" asp-for="@Model.MenuInsertVM.Page">Page</label>
+            <input class="form-control text-black-50 ps-3" asp-for="@Model.MenuInsertVM.Page">
+            <span asp-validation-for="@Model.MenuInsertVM.Page" class="text-danger"></span>
+
+        </div>
+        <div class="col-lg-12 my-4">
+            <label class="form-label text-uppercase" asp-for="@Model.MenuInsertVM.MenuAdi">Aciklama</label>
+            <input class="form-control text-black-50 ps-3" asp-for="@Model.MenuInsertVM.Description">
+            <span asp-validation-for="@Model.MenuInsertVM.Description" class="text-danger"></span>
+
+        </div>
+        <div class="col-lg-12 my-4">
+            <label class="form-label text-uppercase" asp-for="@Model.MenuInsertVM.Title">Title</label>
+            <input class="form-control text-black-50 ps-3" asp-for="@Model.MenuInsertVM.Title">
+            <span asp-validation-for="@Model.MenuInsertVM.Title" class="text-danger"></span>
+
+        </div>
+        <div class="col-lg-12 my-4">
+            <label class="form-label text-uppercase" asp-for="@Model.MenuInsertVM.Icon">Icon</label>
+            <input class="form-control text-black-50 ps-3" asp-for="@Model.MenuInsertVM.Icon">
+            <span asp-validation-for="@Model.MenuInsertVM.Icon" class="text-danger"></span>
+
+        </div>
+        <div class="col-lg-12 my-4">
+            <label class="form-label text-uppercase" asp-for="@Model.MenuInsertVM.Css">CSS</label>
+            <input class="form-control text-black-50 ps-3" asp-for="@Model.MenuInsertVM.Css">
+            <span asp-validation-for="@Model.MenuInsertVM.Css" class="text-danger"></span>
+
+        </div>
+        <div class="col-lg-12 my-4">
+            <label class="form-label text-uppercase" asp-for="@Model.MenuInsertVM.Area">Area</label>
+            <input class="form-control text-black-50 ps-3" asp-for="@Model.MenuInsertVM.Area">
+            <span asp-validation-for="@Model.MenuInsertVM.Area" class="text-danger"></span>
+
+        </div>
+        <div class="d-grid">
+            <button type="submit" class="btn btn-arrow btn-primary mt-3">
+                <span>
+                    Submit
+                    <svg width="18" height="18">
+                        <use xlink:href="#arrow-right"></use>
+                    </svg>
+                </span>
+            </button>
+        </div>
+    </form>
+</div>
+
+<partial name="_ValidationScriptsPartial" />
+

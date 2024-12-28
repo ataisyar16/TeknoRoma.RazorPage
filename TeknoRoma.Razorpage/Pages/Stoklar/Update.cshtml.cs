@@ -1,38 +1,43 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using TeknoRoma.BL.BL.Managers.Abstract;
 using TeknoRoma.Entities.Entities.Concrete;
 
 namespace TeknoRoma.Razorpage.Pages.Stoklar
 {
-    public class UpdateStokModel(IManager<Stok> manager) : PageModel
+    public class UpdateModel : PageModel
     {
-        [BindProperty]
-        public InputModel UpdateModel { get; set; } = new();
+        private readonly IManager<Stok> _manager;
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public UpdateModel(IManager<Stok> manager)
         {
-            // Stok bilgilerini al
-            var stok = await manager.GetByIdAsync(id, default);
+            _manager = manager;
+        }
+
+        [BindProperty]
+        public InputModel EditModel { get; set; } = new();
+
+        public int Id { get; set; }
+
+        public async Task<IActionResult> OnGetAsync(int id)
+        {
+            var stok = await _manager.GetByIdAsync(id.ToString(), default);
             if (stok == null)
             {
-                return NotFound();
+                return NotFound($"Id '{id}' ile bir stok bulunamadý.");
             }
 
-            // InputModel'e bilgileri bind et
-            UpdateModel = new InputModel
-            {
-                Id = stok.Id,
-                StokAdi = stok.StokAdi,
-                StokKodu = stok.StokKodu,
-                DepoId = stok.DepoId,
-                BirimId = stok.BirimId,
-                Fiyat = stok.Fiyat,
-                StokAdet = stok.StokAdet,
-                KategoriId = stok.KategoriId
-            };
+            Id = id;
+            EditModel.Id = id.ToString();
+            EditModel.StokAdi = stok.StokAdi;
+            EditModel.StokKodu = stok.StokKodu;
+            EditModel.DepoId = stok.DepoId;
+            EditModel.StokAdet = stok.StokAdet;
 
+            EditModel.Fiyat = stok.Fiyat;
+            EditModel.KategoriId = stok.KategoriId;
             return Page();
         }
 
@@ -40,21 +45,19 @@ namespace TeknoRoma.Razorpage.Pages.Stoklar
         {
             if (ModelState.IsValid)
             {
-                // Güncelleme için Stok nesnesini oluþtur
                 var stok = new Stok
                 {
-                    Id = UpdateModel.Id,
-                    StokAdi = UpdateModel.StokAdi,
-                    StokKodu = UpdateModel.StokKodu,
-                    DepoId = UpdateModel.DepoId,
-                    BirimId = UpdateModel.BirimId,
-                    Fiyat = UpdateModel.Fiyat,
-                    StokAdet = UpdateModel.StokAdet,
-                    KategoriId = UpdateModel.KategoriId
+                    Id = EditModel.Id,
+                    StokAdi = EditModel.StokAdi,
+                    StokKodu = EditModel.StokKodu,
+                    DepoId = EditModel.DepoId,
+                    StokAdet = (int)EditModel.StokAdet,
+
+                    Fiyat = (double)EditModel.Fiyat,
+                    KategoriId = EditModel.KategoriId
                 };
 
-                // Güncelleme iþlemi
-                var result = await manager.UpdateAsync(stok, default);
+                var result = await _manager.UpdateAsync(stok, default);
                 if (result.Success)
                 {
                     return RedirectToPage("Index");
@@ -71,26 +74,35 @@ namespace TeknoRoma.Razorpage.Pages.Stoklar
 
         public class InputModel
         {
-            [Required]
             public string Id { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Stok adý zorunludur")]
+            [DisplayName("Stok Adý")]
             public string? StokAdi { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Stok kodu zorunludur")]
+            [DisplayName("Stok Kodu")]
             public string? StokKodu { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Depo ID zorunludur")]
+            [DisplayName("Depo ID")]
             public string DepoId { get; set; }
 
-            [Required]
-            public string BirimId { get; set; }
-
-            public double? Fiyat { get; set; }
-
+            [DisplayName("Stok Adet")]
             public int? StokAdet { get; set; }
 
+            [Required(ErrorMessage = "Birim ID zorunludur")]
+            [DisplayName("Birim ID")]
+            public string BirimId { get; set; }
+
+            [DisplayName("Fiyat")]
+            public double? Fiyat { get; set; }
+
+            [Required(ErrorMessage = "Kategori ID zorunludur")]
+            [DisplayName("Kategori ID")]
             public string KategoriId { get; set; }
         }
     }
 }
+
+

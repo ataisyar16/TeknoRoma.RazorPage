@@ -1,4 +1,27 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.Stoklar.DeleteModel
 @{
+    ViewData["Title"] = "Stok Sil";
+    Layout = "/Pages/Shared/_Layout.cshtml";
 }
+
+<h1>Stok Sil</h1>
+<div class="card">
+    <div class="card-header">Silme Onayı</div>
+    <div class="card-body">
+        <h5>Bu stoğu silmek istediğinize emin misiniz?</h5>
+        <p><strong>Birim Kodu:</strong> @Model.Stok.StokAdi</p>
+        <p><strong>Açıklama:</strong> @Model.Stok.StokKodu</p>
+        <p><strong>Açıklama:</strong> @Model.Stok.DepoId</p>
+        <p><strong>Açıklama:</strong> @Model.Stok.StokAdet</p>
+        
+        <p><strong>Açıklama:</strong> @Model.Stok.Fiyat</p>
+        <p><strong>Açıklama:</strong> @Model.Stok.KategoriId</p>
+        <form method="post">
+            <input type="hidden" asp-for="Stok.Id" />
+            <button type="submit" class="btn btn-danger">Sil</button>
+            <a asp-page="Index" class="btn btn-secondary">İptal</a>
+        </form>
+    </div>
+</div>
+

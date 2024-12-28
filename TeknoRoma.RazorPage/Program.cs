@@ -1,7 +1,9 @@
+using AspNetCoreHero.ToastNotification;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using TeknoRoma.BL.BL.Managers.Abstract;
-using TeknoRoma.BL.BL.Managers.Concrete;
 using TeknoRoma.DAL.DAL.Contexts;
+using TeknoRoma.Entities.Entities.Concrete;
+using TeknoRoma.Razorpage.Extensions;
 
 namespace TeknoRoma.Razorpage
 {
@@ -11,13 +13,61 @@ namespace TeknoRoma.Razorpage
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // Database Create Edilmismi yada bekleyen migration varmi kontrol ediliyor
+            using (var db = new AppDbContext())
+            {
+                if (!db.Database.EnsureCreated())
+                {
+                    if (db.Database.GetPendingMigrations().Any())
+                    {
+                        db.Database.Migrate();
+                    }
+
+                }
+
+            }
+
             // Add services to the container.
             builder.Services.AddRazorPages();
 
-            builder.Services.AddScoped(typeof(IManager<>), typeof(Manager<>));
+            #region Extensions/TeknoRomaServices
+            //builder.Services.AddScoped(typeof(IManager<>), typeof(Manager<>)); 
+            #endregion
 
-            builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("Constr")));
+            // Add services to the container.
+            builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+            string constr = builder.Configuration.GetConnectionString("Constr");
+            builder.Services.AddDbContext<AppDbContext>(p => p.UseNpgsql(constr));
+
+            builder.Services.AddIdentity<AppUser, IdentityRole>(p =>
+            {
+                p.Password.RequireDigit = false;//Password icerisinde Sayisal deger olsun mu ?
+                p.Password.RequireNonAlphanumeric = false;//!*$ gibi karajter girilmesi zorunlu olsun mu
+                p.Password.RequireUppercase = false; // Buyuk Harf olsun mu 
+                p.Password.RequireLowercase = false;//Kucuk Harf olsun mu ?
+                p.Password.RequiredLength = 3;// En az 3 karakter olmaz zorunda
+
+                p.User.RequireUniqueEmail = false;//Ayni mail adresinden birden fazla olmasin
+
+                p.SignIn.RequireConfirmedPhoneNumber = false;
+                p.SignIn.RequireConfirmedEmail = false;
+                p.SignIn.RequireConfirmedAccount = false;
+
+
+
+            })
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
+
+            builder.Services.AddTeknoRomaServices();
+            builder.Services.AddNotyf(config =>
+            {
+                config.DurationInSeconds = 3;
+                config.IsDismissable = true;
+
+                config.Position = NotyfPosition.BottomRight;
+
+            });
 
             var app = builder.Build();
 

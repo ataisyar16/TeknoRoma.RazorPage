@@ -1,0 +1,35 @@
+﻿@page
+@model TeknoRoma.Razorpage.Pages.SiparisDetaylari.CreateModel
+@{
+    ViewData["Title"] = "Yeni Siparis Detayı Ekle";
+}
+<h1>Yeni Siparis Detayı Ekle</h1>
+<div class="card">
+    <div class="card-header">Siparis Detayı Bilgileri</div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.InsertModel.SiparisId"></label>
+                <input asp-for="InsertModel.SiparisId" class="form-control" />
+                <span asp-validation-for="InsertModel.SiparisId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.StokId"></label>
+                <input asp-for="InsertModel.StokId" class="form-control" />
+                <span asp-validation-for="InsertModel.StokId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.InsertModel.Miktar"></label>
+                <input asp-for="InsertModel.Miktar" class="form-control" />
+                <span asp-validation-for="InsertModel.Miktar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.BirimFiyat"></label>
+                <input asp-for="InsertModel.BirimFiyat" class="form-control" />
+                <span asp-validation-for="InsertModel.BirimFiyat" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </div>
+</div>
+<partial name="_ValidationScriptsPartial" />

@@ -1,0 +1,64 @@
+﻿@page
+@model TeknoRoma.Razorpage.Pages.Menuler.IndexModel
+@{
+}
+<div class="card">
+    <h5 class="card-header">
+        <a asp-page="Insert" class="btn btn-primary">Add New Menu</a>
+    </h5>
+    <div class="">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Menu Adi</th>
+                    <th>Page</th>
+                    <th>Icon</th>
+                    <th>Css</th>
+                    <th>Area</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Parent</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var menu in Model.MenusVM)
+                {
+                    <tr>
+                        <td><strong>@menu.MenuAdi</strong></td>
+                        <td><strong>@menu.Page</strong></td>
+                        <td><strong>@menu.Icon</strong></td>
+
+                        <td><strong>@menu.Css</strong></td>
+                        <td><strong>@menu.Area</strong></td>
+                        <td><strong>@menu.Title</strong></td>
+                        <td><strong>@menu.Description</strong></td>
+                        <td>
+                            @{
+                                if (menu.Parent != null)
+                                {
+                                    <strong>@menu.Parent.MenuAdi</strong>
+
+                                }
+                            }
+                        </td>
+
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-page="Update" asp-route-id="@menu.Id"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" asp-page="Delete" asp-route-id="@menu.Id"><i class="bx bx-trash me-1"></i> Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+</div>

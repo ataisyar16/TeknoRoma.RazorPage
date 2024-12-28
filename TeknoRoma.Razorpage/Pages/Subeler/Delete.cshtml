@@ -1,4 +1,23 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.Subeler.DeleteModel
 @{
+    ViewData["Title"] = "Sube Sil";
+    Layout = "/Pages/Shared/_Layout.cshtml";
 }
+
+<h1>Sube Sil</h1>
+<div class="card">
+    <div class="card-header">Silme Onayı</div>
+    <div class="card-body">
+        <h5>Bu faturayi silmek istediğinize emin misiniz?</h5>
+        <p><strong>SubeAdi:</strong> @Model.Sube.SubeAdi</p>
+        <p><strong>Sehir:</strong> @Model.Sube.Sehir</p>
+        <p><strong>Ilce:</strong> @Model.Sube.Ilce</p>
+        <p><strong>Address:</strong> @Model.Sube.Address</p>
+        <form method="post">
+            <input type="hidden" asp-for="Sube.Id" />
+            <button type="submit" class="btn btn-danger">Sil</button>
+            <a asp-page="Index" class="btn btn-secondary">İptal</a>
+        </form>
+    </div>
+</div>

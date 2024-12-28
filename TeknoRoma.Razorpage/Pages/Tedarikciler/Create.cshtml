@@ -1,4 +1,35 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.Tedarikciler.CreateModel
 @{
+    ViewData["Title"] = "Yeni Birim Ekle";
 }
+<h1>Yeni Birim Ekle</h1>
+<div class="card">
+    <div class="card-header">Birim Bilgileri</div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.InsertModel.Ad"></label>
+                <input asp-for="InsertModel.Ad" class="form-control" />
+                <span asp-validation-for="InsertModel.Ad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.Telefon"></label>
+                <input asp-for="InsertModel.Telefon" class="form-control" />
+                <span asp-validation-for="InsertModel.Telefon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.InsertModel.Email"></label>
+                <input asp-for="InsertModel.Email" class="form-control" />
+                <span asp-validation-for="InsertModel.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.Adres"></label>
+                <input asp-for="InsertModel.Adres" class="form-control" />
+                <span asp-validation-for="InsertModel.Adres" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </div>
+</div>
+<partial name="_ValidationScriptsPartial" />

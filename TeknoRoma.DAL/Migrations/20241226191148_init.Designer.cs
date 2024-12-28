@@ -12,8 +12,8 @@ using TeknoRoma.DAL.DAL.Contexts;
 namespace TeknoRoma.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241224112022_initDb")]
-    partial class initDb
+    [Migration("20241226191148_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -266,25 +266,21 @@ namespace TeknoRoma.DAL.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("Adres")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<decimal>("Bakiye")
+                    b.Property<decimal?>("Bakiye")
                         .HasColumnType("numeric");
 
                     b.Property<string>("CariHesapNo")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Ilce")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Sehir")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("SubeNo")
@@ -314,7 +310,6 @@ namespace TeknoRoma.DAL.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("UstDepartmanId")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("UstId")
@@ -848,30 +843,30 @@ namespace TeknoRoma.DAL.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("BirimId")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("DepoId")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<double?>("Fiyat")
+                    b.Property<double>("Fiyat")
                         .HasColumnType("double precision");
 
                     b.Property<string>("KategoriId")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("StokAdet")
+                    b.Property<int>("StokAdet")
                         .HasColumnType("integer");
 
                     b.Property<string>("StokAdi")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("StokKodu")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<DateTime>("UpdateAt")
@@ -1092,9 +1087,7 @@ namespace TeknoRoma.DAL.Migrations
                 {
                     b.HasOne("TeknoRoma.Entities.Entities.Concrete.Departman", "UstDepartman")
                         .WithMany()
-                        .HasForeignKey("UstDepartmanId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UstDepartmanId");
 
                     b.Navigation("UstDepartman");
                 });
@@ -1314,25 +1307,19 @@ namespace TeknoRoma.DAL.Migrations
 
             modelBuilder.Entity("TeknoRoma.Entities.Entities.Concrete.Stok", b =>
                 {
-                    b.HasOne("TeknoRoma.Entities.Entities.Concrete.Birim", "Birim")
+                    b.HasOne("TeknoRoma.Entities.Entities.Concrete.Birim", null)
                         .WithMany("Stoklar")
-                        .HasForeignKey("BirimId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BirimId");
 
                     b.HasOne("TeknoRoma.Entities.Entities.Concrete.Depo", "Depo")
                         .WithMany("Stoklar")
-                        .HasForeignKey("DepoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DepoId");
 
                     b.HasOne("TeknoRoma.Entities.Entities.Concrete.Kategori", "Kategori")
                         .WithMany("Stoklar")
                         .HasForeignKey("KategoriId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Birim");
 
                     b.Navigation("Depo");
 

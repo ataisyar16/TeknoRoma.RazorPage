@@ -9,7 +9,7 @@
     <div class="card-body">
         <form method="post">
             <div class="form-group">
-                <label asp-for="InsertModel.BirimKodu"></label>
+                <label asp-for="@Model.InsertModel.BirimKodu"></label>
                 <input asp-for="InsertModel.BirimKodu" class="form-control" />
                 <span asp-validation-for="InsertModel.BirimKodu" class="text-danger"></span>
             </div>
@@ -18,6 +18,8 @@
                 <input asp-for="InsertModel.Aciklama" class="form-control" />
                 <span asp-validation-for="InsertModel.Aciklama" class="text-danger"></span>
             </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
         </form>
     </div>
 </div>
+<partial name="_ValidationScriptsPartial" />

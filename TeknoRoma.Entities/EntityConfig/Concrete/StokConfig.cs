@@ -28,10 +28,7 @@ namespace TeknoRoma.Entities.EntityConfig
                    .HasForeignKey(s => s.DepoId)
                    .OnDelete(DeleteBehavior.NoAction);
 
-            builder.HasOne(s => s.Birim)
-                   .WithMany(b => b.Stoklar)
-                   .HasForeignKey(s => s.BirimId)
-                   .OnDelete(DeleteBehavior.NoAction);
+
 
             builder.HasMany(s => s.SatisDetaylari)
                    .WithOne(sd => sd.Stok)

@@ -1,4 +1,35 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.Subeler.CreateModel
 @{
+    ViewData["Title"] = "Yeni Sube Ekle";
 }
+<h1>Yeni Sube Ekle</h1>
+<div class="card">
+    <div class="card-header">Birim Bilgileri</div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.InsertModel.SubeAdi"></label>
+                <input asp-for="InsertModel.SubeAdi" class="form-control" />
+                <span asp-validation-for="InsertModel.SubeAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.Sehir"></label>
+                <input asp-for="InsertModel.Sehir" class="form-control" />
+                <span asp-validation-for="InsertModel.Sehir" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.InsertModel.Ilce"></label>
+                <input asp-for="InsertModel.Ilce" class="form-control" />
+                <span asp-validation-for="InsertModel.Ilce" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.Address"></label>
+                <input asp-for="InsertModel.Address" class="form-control" />
+                <span asp-validation-for="InsertModel.Address" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </div>
+</div>
+<partial name="_ValidationScriptsPartial" />

@@ -1,4 +1,23 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.Faturalar.DeleteModel
 @{
+    ViewData["Title"] = "Fatura Sil";
+    Layout = "/Pages/Shared/_Layout.cshtml";
 }
+
+<h1>Fatura Sil</h1>
+<div class="card">
+    <div class="card-header">Silme Onayı</div>
+    <div class="card-body">
+        <h5>Bu faturayi silmek istediğinize emin misiniz?</h5>
+        <p><strong>Birim Kodu:</strong> @Model.Fatura.CariId</p>
+        <p><strong>Açıklama:</strong> @Model.Fatura.FaturaTarihi</p>
+        <p><strong>Açıklama:</strong> @Model.Fatura.ToplamTutar</p>
+        <p><strong>Açıklama:</strong> @Model.Fatura.KDV</p>
+        <form method="post">
+            <input type="hidden" asp-for="Fatura.Id" />
+            <button type="submit" class="btn btn-danger">Sil</button>
+            <a asp-page="Index" class="btn btn-secondary">İptal</a>
+        </form>
+    </div>
+</div>

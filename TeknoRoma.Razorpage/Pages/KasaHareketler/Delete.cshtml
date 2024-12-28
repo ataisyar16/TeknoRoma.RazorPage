@@ -1,4 +1,26 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.KasaHareketler.DeleteModel
 @{
+    ViewData["Title"] = "Kasa Hareket Sil";
+    Layout = "/Pages/Shared/_Layout.cshtml";
 }
+
+<h1>Kasa Hareket Sil</h1>
+<div class="card">
+    <div class="card-header">Silme Onayı</div>
+    <div class="card-body">
+        <h5>Bu faturayi silmek istediğinize emin misiniz?</h5>
+        <p><strong>Birim Kodu:</strong> @Model.KasaHareket.KasaId</p>
+        <p><strong>Açıklama:</strong> @Model.KasaHareket.DovizId</p>
+        <p><strong>Açıklama:</strong> @Model.KasaHareket.HareketTipi</p>
+        <p><strong>Açıklama:</strong> @Model.KasaHareket.Giris</p>
+        <p><strong>Birim Kodu:</strong> @Model.KasaHareket.Cikis</p>
+        <p><strong>Açıklama:</strong> @Model.KasaHareket.Tutar</p>
+        <p><strong>Açıklama:</strong> @Model.KasaHareket.Tarih</p>
+        <form method="post">
+            <input type="hidden" asp-for="KasaHareket.Id" />
+            <button type="submit" class="btn btn-danger">Sil</button>
+            <a asp-page="Index" class="btn btn-secondary">İptal</a>
+        </form>
+    </div>
+</div>

@@ -1,4 +1,21 @@
-﻿@page
+﻿@page 
 @model TeknoRoma.Razorpage.Pages.Birimler.DeleteModel
 @{
+    ViewData["Title"] = "Birim Sil";
+    Layout = "/Pages/Shared/_Layout.cshtml";
 }
+
+<h1>Birim Sil</h1>
+<div class="card">
+    <div class="card-header">Silme Onayı</div>
+    <div class="card-body">
+        <h5>Bu birimi silmek istediğinize emin misiniz?</h5>
+        <p><strong>Birim Kodu:</strong> @Model.Birim.BirimKodu</p>
+        <p><strong>Açıklama:</strong> @Model.Birim.Aciklama</p>
+        <form method="post">
+            <input type="hidden" asp-for="Birim.Id" />
+            <button type="submit" class="btn btn-danger">Sil</button>
+            <a asp-page="Index" class="btn btn-secondary">İptal</a>
+        </form>
+    </div>
+</div>

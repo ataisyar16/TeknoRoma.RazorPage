@@ -1,36 +1,63 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.Stoklar.IndexModel
 @{
-    ViewData["Title"] = "Stok Listesi";
+    ViewData["Title"] = "Faturalar";
+    Layout = "/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Stok Listesi</h1>
+<div class="card">
+    <h5 class="card-header">
+        <a asp-page="Create" class="btn btn-primary">Add New Fatura</a>
+    </h5>
+    <div class="">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Stok Adi</th>
+                    <th> Stok Kodu</th>
+                    <th>DepoId</th>
+                    <th>Stok Adet</th>
+                    
+                    <th>Fiyat</th>
+                    <th>Kategori Id</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var stok in Model.Stoklar)
+                {
+                    <tr>
+                        <td><strong>@stok.StokAdi</strong></td>
+                        <td><strong>@stok.StokKodu</strong></td>
+                        <td><strong>@stok.DepoId</strong></td>
+                        <td><strong>@stok.StokAdet</strong></td>
+                        
+                        <td><strong>@stok.Fiyat</strong></td>
+                        <td><strong>@stok.KategoriId</strong></td>
+                        <td>
+                            @{
+                                if (stok.StokKodu != null)
+                                {
+                                    <strong>@stok.StokKodu</strong>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Stok Adı</th>
-            <th>Stok Kodu</th>
-            <th>Depo Id</th>
-            <th>Birim Id</th>
-            <th>Fiyat</th>
-            <th>Stok Adet</th>
-            <th>Kategori Id</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var stok in Model.Stoklar)
-        {
-            <tr>
-                <td>@stok.StokAdi</td>
-                <td>@stok.StokKodu</td>
-                <td>@stok.DepoId</td>
-                <td>@stok.BirimId</td>
-                <td>@stok.Fiyat</td>
-                <td>@stok.StokAdet</td>
-                <td>@stok.KategoriId</td>
-            </tr>
-        }
-        <button type="submit" class="btn btn-primary mt-3">Kaydet</button>
-    </tbody>
-</table>
+                                }
+                            }
+                        </td>
+
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-page="Update" asp-route-id="@stok.Id"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" asp-page="Delete" asp-route-id="@stok.Id"><i class="bx bx-trash me-1"></i> Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
