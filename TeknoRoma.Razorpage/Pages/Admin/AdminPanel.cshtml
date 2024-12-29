@@ -1,0 +1,61 @@
+﻿@page
+
+@model TeknoRoma.Razorpage.Pages.Admin.AdminPanelModel
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<TeknoRoma.Entities.Entities.Concrete.AppUser> UserManager
+@{
+    ViewData["Title"] = "Admin Kontrol Paneli";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center">Admin Kontrol Paneli</h1>
+    <p class="text-center">Merhaba, @Model.FullName! Yönetici paneline hoş geldiniz.</p>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Birimler</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/Birimler/Index">Birimleri Listele</a>
+                    <a class="btn btn-success d-block" asp-page="/Birimler/Create">Yeni Birim Ekle</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Departmanlar</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/Departmanlar/Index">Departmanları Listele</a>
+                    <a class="btn btn-success d-block" asp-page="/Departmanlar/Create">Yeni Departman Ekle</a>
+                    <a class="btn btn-success d-block" asp-page="/Departmanlar/Delete">Yeni Departman Sil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Şubeler</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/Subeler/Index">Şubeleri Listele</a>
+                    <a class="btn btn-success d-block" asp-page="/Subeler/Create">Yeni Şube Ekle</a>
+                    <a class="btn btn-success d-block" asp-page="/Subeler/Delete">Yeni Şube Sil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Siparişler</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/Siparisler/Index">Siparişleri Listele</a>
+                    <a class="btn btn-success d-block" asp-page="/Siparisler/Create">Yeni Sipariş Ekle</a>
+                    <a class="btn btn-success d-block" asp-page="/Siparisler/Delete">Yeni Sipariş Sil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

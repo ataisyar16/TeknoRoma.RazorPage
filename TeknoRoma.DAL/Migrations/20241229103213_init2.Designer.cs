@@ -12,8 +12,8 @@ using TeknoRoma.DAL.DAL.Contexts;
 namespace TeknoRoma.DAL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241226191148_init")]
-    partial class init
+    [Migration("20241229103213_init2")]
+    partial class init2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

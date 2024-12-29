@@ -6,43 +6,64 @@ using TeknoRoma.Entities.Entities.Concrete;
 
 namespace TeknoRoma.Razorpage.Pages.Account
 {
-    public class LoginModel(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager) : PageModel
+    public class LoginModel : PageModel
     {
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
+
+        public LoginModel(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager)
+        {
+            _signInManager = signInManager;
+            _userManager = userManager;
+        }
 
         [BindProperty]
         public InputModel ModelInput { get; set; } = new();
+
         public void OnGet()
         {
         }
 
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-            var user = await userManager.FindByEmailAsync(ModelInput.Email);
+
+            var user = await _userManager.FindByNameAsync(ModelInput.FullName);
             if (user == null)
             {
-                ModelState.AddModelError("", "Kullanici Bulunamadi");
+                ModelState.AddModelError(string.Empty, "Kullanýcý bulunamadý.");
                 return Page();
             }
-            var result = await signInManager.PasswordSignInAsync(user, ModelInput.Password, true, false);
+
+            var result = await _signInManager.PasswordSignInAsync(user, ModelInput.Password, true, false);
             if (result.Succeeded)
             {
-                return RedirectToPage("/Admin/Users/Index");
+                // Kullanýcýnýn rolüne göre yönlendirme
+                if (await _userManager.IsInRoleAsync(user, "Admin"))
+                {
+                    return RedirectToPage("/Admin/AdminPanel");
+                }
+                else if (await _userManager.IsInRoleAsync(user, "User"))
+                {
+                    return RedirectToPage("/User/UserPanel");
+                }
+
+                return RedirectToPage("/Index");
             }
-            ModelState.AddModelError("", "Kullanici Bulunamadi");
+
+            ModelState.AddModelError(string.Empty, "Geçersiz giriþ denemesi.");
             return Page();
         }
+
         public class InputModel
         {
-            [Required(ErrorMessage = "Email Zorunludur")]
-            [DataType(DataType.EmailAddress)]
-            public string Email { get; set; }
+            [Required(ErrorMessage = "Full Name zorunludur.")]
+            public string FullName { get; set; }
 
-
-            [Required(ErrorMessage = "Þifre Zorunludur")]
+            [Required(ErrorMessage = "Þifre zorunludur.")]
             [DataType(DataType.Password)]
             public string Password { get; set; }
         }

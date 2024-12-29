@@ -1,0 +1,53 @@
+﻿
+@page
+@model TeknoRoma.Razorpage.Pages.User.UserPanelModel
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<TeknoRoma.Entities.Entities.Concrete.AppUser> UserManager
+@{
+    ViewData["Title"] = "Kullanıcı Paneli";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center">Kullanıcı Paneli</h1>
+    <p class="text-center">Merhaba, @Model.FullName! Kullanıcı paneline hoş geldiniz.</p>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Birimler</h5>
+                    <a class="btn btn-primary d-block" asp-page="/Birimler/Index">Birimleri Listele</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Departmanlar</h5>
+                    <a class="btn btn-primary d-block" asp-page="/Departmanlar/Index">Departmanları Listele</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Şubeler</h5>
+                    <a class="btn btn-primary d-block" asp-page="/Subeler/Index">Şubeleri Listele</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Siparişler</h5>
+                    <a class="btn btn-primary d-block" asp-page="/Siparisler/Index">Siparişleri Listele</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
