@@ -1,4 +1,63 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.Personeller.IndexModel
 @{
+    ViewData["Title"] = "Personeller";
+    Layout = "/Pages/Shared/_Layout.cshtml";
 }
+
+<div class="card">
+    <h5 class="card-header">
+        <a asp-page="Create" class="btn btn-primary">Add New Personel</a>
+    </h5>
+    <div class="">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>SubeId</th>
+                    <th> Ad</th>
+                    <th>Soyad</th>
+                    <th>TcNo</th>
+                    <th> DepartmanId</th>
+                    <th>Cinsiyet</th>
+                    <th>Gorev</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var personel in Model.Personeller)
+                {
+                    <tr>
+                        <td><strong>@personel.SubeId</strong></td>
+                        <td><strong>@personel.Ad</strong></td>
+                        <td><strong>@personel.Soyad</strong></td>
+                        <td><strong>@personel.TcNo</strong></td>
+                        <td><strong>@personel.DepartmanId</strong></td>
+                        <td><strong>@personel.Cinsiyet</strong></td>
+                        <td><strong>@personel.Gorev</strong></td>
+                        <td>
+                            @{
+                                if (personel.SubeId != null)
+                                {
+                                    <strong>@personel.SubeId</strong>
+
+                                }
+                            }
+                        </td>
+
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-page="Update" asp-route-id="@personel.Id"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" asp-page="Delete" asp-route-id="@personel.Id"><i class="bx bx-trash me-1"></i> Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

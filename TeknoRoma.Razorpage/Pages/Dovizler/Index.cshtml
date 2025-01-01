@@ -1,4 +1,54 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.Dovizler.IndexModel
 @{
+    ViewData["Title"] = "Dövizler";
+    Layout = "/Pages/Shared/_Layout.cshtml";
 }
+
+<div class="card">
+    <h5 class="card-header">
+        <a asp-page="Create" class="btn btn-primary">Add New Döviz</a>
+    </h5>
+    <div class="">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Doviz Kodu</th>
+                    <th>Doviz Adi</th>
+                    <th>Kur</th> 
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var doviz in Model.Dovizler)
+                {
+                    <tr>
+                        <td><strong>@doviz.DovizKodu</strong></td>
+                        <td><strong>@doviz.DovizAdi</strong></td>
+                        <td><strong>@doviz.Kur</strong></td>
+                        <td>
+                            @{
+                                if (doviz.DovizKodu != null)
+                                {
+                                    <strong>@doviz.DovizKodu</strong>
+                                }
+                            }
+                        </td>
+
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-page="Update" asp-route-id="@doviz.Id"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" asp-page="Delete" asp-route-id="@doviz.Id"><i class="bx bx-trash me-1"></i> Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

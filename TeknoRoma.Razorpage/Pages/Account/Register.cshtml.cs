@@ -52,7 +52,8 @@ namespace TeknoRoma.Razorpage.Pages.Account
                 UserName = ModelInput.Email,
                 FullName = ModelInput.FullName,
                 Email = ModelInput.Email,
-                TcNo = ModelInput.TcNo
+                TcNo = ModelInput.TcNo,
+                UserType = ModelInput.UserType
             };
 
             var result = await userManager.CreateAsync(user, ModelInput.Password);

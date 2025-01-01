@@ -1,4 +1,56 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.SatisDetaylari.IndexModel
 @{
+    ViewData["Title"] = "SatisDetaylari";
+    Layout = "/Pages/Shared/_Layout.cshtml";
 }
+
+<div class="card">
+    <h5 class="card-header">
+        <a asp-page="Create" class="btn btn-primary">Add New Fatura</a>
+    </h5>
+    <div class="">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>SatisId</th>
+                    <th>StokId</th>
+                    <th>Miktar</th>
+                    <th>BirimFiyat</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var satisDetay in Model.SatisDetaylar)
+                {
+                    <tr>
+                        <td><strong>@satisDetay.SatisId</strong></td>
+                        <td><strong>@satisDetay.StokId</strong></td>
+                        <td><strong>@satisDetay.Miktar</strong></td>
+                        <td><strong>@satisDetay.BirimFiyat</strong></td>
+                        <td>
+                            @{
+                                if (satisDetay.SatisId != null)
+                                {
+                                    <strong>@satisDetay.SatisId</strong>
+
+                                }
+                            }
+                        </td>
+
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" asp-page="Update" asp-route-id="@satisDetay.Id"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" asp-page="Delete" asp-route-id="@satisDetay.Id"><i class="bx bx-trash me-1"></i> Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

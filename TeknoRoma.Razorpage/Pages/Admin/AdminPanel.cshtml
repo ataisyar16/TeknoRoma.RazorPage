@@ -17,7 +17,19 @@
                 <div class="card-body">
                     <h5 class="card-title">Birimler</h5>
                     <a class="btn btn-primary d-block mb-2" asp-page="/Birimler/Index">Birimleri Listele</a>
-                    <a class="btn btn-success d-block" asp-page="/Birimler/Create">Yeni Birim Ekle</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/Birimler/Create"> Birim Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/Birimler/Delete"> Birim Sil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Cariler</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/Cariler/Index">Carileri Listele</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/Cariler/Create">Yeni Cari Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/Cariler/Delete"> Cari Sil</a>
                 </div>
             </div>
         </div>
@@ -27,32 +39,196 @@
                 <div class="card-body">
                     <h5 class="card-title">Departmanlar</h5>
                     <a class="btn btn-primary d-block mb-2" asp-page="/Departmanlar/Index">Departmanları Listele</a>
-                    <a class="btn btn-success d-block" asp-page="/Departmanlar/Create">Yeni Departman Ekle</a>
-                    <a class="btn btn-success d-block" asp-page="/Departmanlar/Delete">Yeni Departman Sil</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/Departmanlar/Create">Yeni Departman Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/Departmanlar/Delete"> Departman Sil</a>
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Depolar</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/Depolar/Index">Depolari Listele</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/Depolar/Create">Yeni Depo Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/Depolar/Delete"> Depo Sil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Dövizler</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/Dovizler/Index">Dövizleri Listele</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/Dovizler/Create">Yeni Döviz Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/Dovizler/Delete"> Döviz Sil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Fatura Detayları</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/FaturaDetaylar/Index">Fatura Detaylarini Listele</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/FaturaDetaylar/Create">Yeni Fatura Detay Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/FaturaDetaylar/Delete"> Fatura Detay Sil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Faturalar</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/Faturalar/Index">Faturaları Listele</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/Faturalar/Create">Yeni Fatura Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/Faturalar/Delete"> Fatura Sil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Kasa Hareketleri</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/KasaHareketler/Index">Kasa Hareketlerini Listele</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/KasaHareketler/Create">Yeni Kasa Hareket Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/KasaHareketler/Delete">Kasa Hareket Sil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Kasalar</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/Kasalar/Index">Kasalari Listele</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/Kasalar/Create">Yeni Kasa Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/Kasalar/Delete">Kasa Sil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Kategoriler</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/Kategoriler/Index">Kasalari Listele</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/Kategoriler/Create">Yeni Kasa Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/Kategoriler/Delete">Kasa Sil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Kullanıcı Yorumları</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/KullaniciYorumlari/Index">Kullanici Yorumlarini Listele</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/KullaniciYorumlari/Create">Yeni Kullanici Yorum Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/KullaniciYorumlari/Delete">KullaniciYorum Sil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Kurlar</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/Kurlar/Index">Kurlari Listele</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/Kurlar/Create">Yeni Kur Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/Kurlar/Delete">Kur Sil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Personeller</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/Personeller/Index">Personelleri Listele</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/Personeller/Create">Yeni Personel Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/Personeller/Delete">Personel Sil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Satış Detayları</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/SatisDetaylari/Index">Satış Detaylarını Listele</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/SatisDetaylari/Create">Yeni Satış Detayı Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/SatisDetaylari/Delete">Satış Detayı Sil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Satışlar</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/Satislar/Index">Satışları Listele</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/Satislar/Create">Yeni Satış Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/Satislar/Delete">Satış Sil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sipariş Detayları</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/SiparisDetaylari/Index">Sipariş Detaylarını Listele</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/SiparisDetaylari/Create">Yeni Sipariş Detayı Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/SiparisDetaylari/Delete">Sipariş Detayı Sil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Siparişler</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/Siparisler/Index">Siparişleri Listele</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/Siparisler/Create">Yeni Sipariş Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/Siparisler/Delete">Sipariş Sil</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Stoklar</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/Stoklar/Index">Stokları Listele</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/Stoklar/Create">Yeni Stok Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/Stoklar/Delete">Stok Sil</a>
+                </div>
+            </div>
+        </div>
+
 
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Şubeler</h5>
                     <a class="btn btn-primary d-block mb-2" asp-page="/Subeler/Index">Şubeleri Listele</a>
-                    <a class="btn btn-success d-block" asp-page="/Subeler/Create">Yeni Şube Ekle</a>
-                    <a class="btn btn-success d-block" asp-page="/Subeler/Delete">Yeni Şube Sil</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/Subeler/Create">Yeni Şube Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/Subeler/Delete">Şube Sil</a>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row mt-4">
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Siparişler</h5>
-                    <a class="btn btn-primary d-block mb-2" asp-page="/Siparisler/Index">Siparişleri Listele</a>
-                    <a class="btn btn-success d-block" asp-page="/Siparisler/Create">Yeni Sipariş Ekle</a>
-                    <a class="btn btn-success d-block" asp-page="/Siparisler/Delete">Yeni Sipariş Sil</a>
+                    <h5 class="card-title">Tedarikçiler</h5>
+                    <a class="btn btn-primary d-block mb-2" asp-page="/Tedarikciler/Index">Tedarikçileri Listele</a>
+                    <a class="btn btn-success d-block mb-2" asp-page="/Tedarikciler/Create">Yeni Tedarikçi Ekle</a>
+                    <a class="btn btn-danger d-block mb-2" asp-page="/Tedarikciler/Delete">Tedarikçi Sil</a>
                 </div>
             </div>
         </div>

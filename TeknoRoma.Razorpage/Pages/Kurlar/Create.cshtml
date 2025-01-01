@@ -1,4 +1,35 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.Kurlar.CreateModel
 @{
+    ViewData["Title"] = "Yeni Kur Ekle";
 }
+<h1>Yeni Kur Ekle</h1>
+<div class="card">
+    <div class="card-header">Kur Bilgileri</div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.InsertModel.DovizId"></label>
+                <input asp-for="InsertModel.DovizId" class="form-control" />
+                <span asp-validation-for="InsertModel.DovizId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.KurTarihi"></label>
+                <input asp-for="InsertModel.KurTarihi" class="form-control" />
+                <span asp-validation-for="InsertModel.KurTarihi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.InsertModel.AlisKuru"></label>
+                <input asp-for="InsertModel.AlisKuru" class="form-control" />
+                <span asp-validation-for="InsertModel.AlisKuru" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.SatisKuru"></label>
+                <input asp-for="InsertModel.SatisKuru" class="form-control" />
+                <span asp-validation-for="InsertModel.SatisKuru" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </div>
+</div>
+<partial name="_ValidationScriptsPartial" />

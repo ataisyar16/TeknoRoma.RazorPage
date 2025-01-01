@@ -1,4 +1,50 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.Personeller.CreateModel
 @{
+    ViewData["Title"] = "Yeni Personel Ekle";
 }
+<h1>Yeni Personel Ekle</h1>
+<div class="card">
+    <div class="card-header">Personel Bilgileri</div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.InsertModel.SubeId"></label>
+                <input asp-for="InsertModel.SubeId" class="form-control" />
+                <span asp-validation-for="InsertModel.SubeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.Ad"></label>
+                <input asp-for="InsertModel.Ad" class="form-control" />
+                <span asp-validation-for="InsertModel.Ad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.InsertModel.Soyad"></label>
+                <input asp-for="InsertModel.Soyad" class="form-control" />
+                <span asp-validation-for="InsertModel.Soyad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.TcNo"></label>
+                <input asp-for="InsertModel.TcNo" class="form-control" />
+                <span asp-validation-for="InsertModel.TcNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.InsertModel.DepartmanId"></label>
+                <input asp-for="InsertModel.DepartmanId" class="form-control" />
+                <span asp-validation-for="InsertModel.DepartmanId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.Cinsiyet"></label>
+                <input asp-for="InsertModel.Cinsiyet" class="form-control" />
+                <span asp-validation-for="InsertModel.Cinsiyet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.Gorev"></label>
+                <input asp-for="InsertModel.Gorev" class="form-control" />
+                <span asp-validation-for="InsertModel.Gorev" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </div>
+</div>
+<partial name="_ValidationScriptsPartial" />

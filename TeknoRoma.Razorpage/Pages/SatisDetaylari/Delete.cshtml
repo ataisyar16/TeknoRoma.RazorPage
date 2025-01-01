@@ -1,4 +1,23 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.SatisDetaylari.DeleteModel
 @{
+    ViewData["Title"] = "SatisDetay Sil";
+    Layout = "/Pages/Shared/_Layout.cshtml";
 }
+
+<h1>SatisDetay Sil</h1>
+<div class="card">
+    <div class="card-header">Silme Onayı</div>
+    <div class="card-body">
+        <h5>Bu satış detayını silmek istediğinize emin misiniz?</h5>
+        <p><strong>Birim Kodu:</strong> @Model.SatisDetay.SatisId</p>
+        <p><strong>Açıklama:</strong> @Model.SatisDetay.StokId</p>
+        <p><strong>Açıklama:</strong> @Model.SatisDetay.Miktar</p>
+        <p><strong>Açıklama:</strong> @Model.SatisDetay.BirimFiyat</p>
+        <form method="post">
+            <input type="hidden" asp-for="SatisDetay.Id" />
+            <button type="submit" class="btn btn-danger">Sil</button>
+            <a asp-page="Index" class="btn btn-secondary">İptal</a>
+        </form>
+    </div>
+</div>

@@ -8,7 +8,7 @@ namespace TeknoRoma.Entities.Entities.Concrete
         [PersonalData]
         public string TcNo { get; set; } // Personel ile ilişki (Opsiyonel)
 
-        public string UserType { get; set; } = "User"; // "Admin" veya "User" olabilir.
+        public string UserType { get; set; } // "Admin" veya "User" olabilir.
 
 
 

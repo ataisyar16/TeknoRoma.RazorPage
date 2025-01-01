@@ -54,7 +54,6 @@ namespace TeknoRoma.Razorpage
                 p.SignIn.RequireConfirmedAccount = false;
 
 
-
             })
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();

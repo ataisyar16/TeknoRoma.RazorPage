@@ -1,4 +1,30 @@
 ﻿@page
 @model TeknoRoma.Razorpage.Pages.Dovizler.CreateModel
 @{
+    ViewData["Title"] = "Yeni Döviz Ekle";
 }
+<h1>Yeni Birim Ekle</h1>
+<div class="card">
+    <div class="card-header">Döviz Bilgileri</div>
+    <div class="card-body">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.InsertModel.DovizKodu"></label>
+                <input asp-for="InsertModel.DovizKodu" class="form-control" />
+                <span asp-validation-for="InsertModel.DovizKodu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.DovizAdi"></label>
+                <input asp-for="InsertModel.DovizAdi" class="form-control" />
+                <span asp-validation-for="InsertModel.DovizAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsertModel.Kur"></label>
+                <input asp-for="InsertModel.Kur" class="form-control" />
+                <span asp-validation-for="InsertModel.Kur" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydet</button>
+        </form>
+    </div>
+</div>
+<partial name="_ValidationScriptsPartial" />
