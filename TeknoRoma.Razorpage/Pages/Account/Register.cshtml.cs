@@ -9,7 +9,7 @@ namespace TeknoRoma.Razorpage.Pages.Account
 {
     public class RegisterModel(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<AppUser> signInManager) : PageModel
     {
-
+        //Database'e Yeni User bilgisi kaydetme iþlemi
 
         [BindProperty]
         public InputModel ModelInput { get; set; } = new();
