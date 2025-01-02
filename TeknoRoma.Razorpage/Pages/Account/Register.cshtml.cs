@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using TeknoRoma.Entities.Entities.Concrete;
+using RequiredAttribute = Microsoft.Build.Framework.RequiredAttribute;
 
 namespace TeknoRoma.Razorpage.Pages.Account
 {
@@ -15,7 +16,7 @@ namespace TeknoRoma.Razorpage.Pages.Account
 
         public class InputModel
         {
-            [Required]
+            [System.ComponentModel.DataAnnotations.Required]
             public string FullName { get; set; }
 
             [Required]
