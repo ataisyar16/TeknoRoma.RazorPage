@@ -56,6 +56,18 @@ namespace TeknoRoma.Razorpage.Pages.Account
                 TcNo = ModelInput.TcNo,
                 UserType = ModelInput.UserType
             };
+            var user2 = new AppUser
+            {
+                UserName = ModelInput.Email,
+                FullName = ModelInput.FullName,
+                Email = ModelInput.Email,
+                TcNo = ModelInput.TcNo,
+                UserType = ModelInput.UserType
+            };
+            var user3 = new AppUser
+            {
+
+            };
 
             var result = await userManager.CreateAsync(user, ModelInput.Password);
 

@@ -21,3 +21,14 @@ Birimler ve Stoklar
 
 Her Stok, bir Birim ile ilişkilidir.
 Bir Birim birden fazla Stok için kullanılabilir.
+
+
+
+
+
+
+
+
+
+
+

@@ -16,28 +16,27 @@ namespace TeknoRoma.Razorpage.Pages.Account
             _signInManager = signInManager;
             _userManager = userManager;
         }
-
         [BindProperty]
         public InputModel ModelInput { get; set; } = new();
 
         public void OnGet()
         {
         }
-
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
-
+            else
+            {
+            }
             var user = await _userManager.FindByNameAsync(ModelInput.FullName);
             if (user == null)
             {
                 ModelState.AddModelError(string.Empty, "Kullanýcý bulunamadý.");
                 return Page();
             }
-
             var result = await _signInManager.PasswordSignInAsync(user, ModelInput.Password, true, false);
             if (result.Succeeded)
             {
@@ -50,14 +49,11 @@ namespace TeknoRoma.Razorpage.Pages.Account
                 {
                     return RedirectToPage("/User/UserPanel");
                 }
-
                 return RedirectToPage("/Index");
             }
-
             ModelState.AddModelError(string.Empty, "Geçersiz giriþ denemesi.");
             return Page();
         }
-
         public class InputModel
         {
             [Required(ErrorMessage = "Full Name zorunludur.")]

@@ -5,43 +5,47 @@
 }
 
 <div class="col-md-6 col-lg-5 col-xl-4 mt-5 mt-md-0">
-    <form class="form-group bg-white p-5 rounded-4" method="post">
+    <form id="form" class="form-group flex-wrap bg-white p-5 rounded-4 ms-md-5" method="post">
         <h3 class="display-5">Register Form</h3>
 
-        <div class="my-3">
-            <label asp-for="ModelInput.FullName" class="form-label">Full Name</label>
-            <input asp-for="ModelInput.FullName" class="form-control" />
+        <div class="col-lg-12 my-4">
+            <label class="form-label text-uppercase" asp-for="ModelInput.FullName">Full Name</label>
+            <input class="form-control text-black-50 ps-3" asp-for="ModelInput.FullName">
             <span asp-validation-for="ModelInput.FullName" class="text-danger"></span>
         </div>
 
-        <div class="my-3">
-            <label asp-for="ModelInput.Email" class="form-label">Email</label>
-            <input asp-for="ModelInput.Email" class="form-control" />
+        <div class="col-lg-12 my-4">
+            <label asp-for="ModelInput.Email" class="form-label text-uppercase">Email</label>
+            <input asp-for="ModelInput.Email" class="form-control text-black-50 ps-3" />
             <span asp-validation-for="ModelInput.Email" class="text-danger"></span>
         </div>
 
-        <div class="my-3">
-            <label asp-for="ModelInput.TcNo" class="form-label">Tc No</label>
-            <input asp-for="ModelInput.TcNo" class="form-control" />
+        <div class="col-lg-12 my-4">
+            <label asp-for="ModelInput.TcNo" class="form-label text-uppercase">Tc No</label>
+            <input asp-for="ModelInput.TcNo" class="form-control text-black-50 ps-3" />
             <span asp-validation-for="ModelInput.TcNo" class="text-danger"></span>
         </div>
 
-        <div class="my-3">
-            <label asp-for="ModelInput.Password" class="form-label">Password</label>
-            <input asp-for="ModelInput.Password" class="form-control" type="password" />
+        <div class="col-lg-12 my-4">
+            <label class="form-label text-uppercase" asp-for="ModelInput.Password">Password</label>
+            <div class="input-group">
+                <input class="form-control text-black-50 ps-3" asp-for="ModelInput.Password" type="password" id="passwordInput">
+                <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility('passwordInput')">👁</button>
+            </div>
             <span asp-validation-for="ModelInput.Password" class="text-danger"></span>
-            <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility()">👁</button>
         </div>
 
-        <div class="my-3">
-            <label asp-for="ModelInput.RePassword" class="form-label">Re-Password</label>
-            <input asp-for="ModelInput.RePassword" class="form-control" type="password" />
+        <div class="col-lg-12 my-4">
+            <label class="form-label text-uppercase" asp-for="ModelInput.RePassword">Confirm Password</label>
+            <div class="input-group">
+                <input class="form-control text-black-50 ps-3" asp-for="ModelInput.RePassword" type="password" id="repasswordInput">
+                <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility('repasswordInput')">👁</button>
+            </div>
             <span asp-validation-for="ModelInput.RePassword" class="text-danger"></span>
-            <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility()">👁</button>
         </div>
 
-        <div class="my-3">
-            <label asp-for="ModelInput.UserType" class="form-label">User Type</label>
+        <div class="col-lg-12 my-4">
+            <label asp-for="ModelInput.UserType" class="form-label text-uppercase">User Type</label>
             <select asp-for="ModelInput.UserType" class="form-control" asp-items="@(new SelectList(Model.UserTypes))">
                 <option value="">Select User Type</option>
             </select>
@@ -52,3 +56,13 @@
     </form>
 </div>
 <partial name="_ValidationScriptsPartial" />
+<script>
+    function togglePasswordVisibility(inputId) {
+        const passwordInput = document.getElementById(inputId);
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+        } else {
+            passwordInput.type = 'password';
+        }
+    }
+</script>

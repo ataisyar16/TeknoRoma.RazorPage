@@ -30,6 +30,7 @@ namespace TeknoRoma.Razorpage
             // Add services to the container.
             builder.Services.AddRazorPages();
 
+
             #region Extensions/TeknoRomaServices
             //builder.Services.AddScoped(typeof(IManager<>), typeof(Manager<>)); 
             #endregion
@@ -99,6 +100,7 @@ namespace TeknoRoma.Razorpage
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
